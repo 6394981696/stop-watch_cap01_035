@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Stopwatch</title>
+  <style>
+    /* Some basic styling for the stopwatch */
+    #stopwatch {
+      font-size: 36px;
+      text-align: center;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div>
+    <button onclick="startStopwatch()">Start</button>
+    <button onclick="pauseStopwatch()">Pause</button>
+    <button onclick="resetStopwatch()">Reset</button>
+  </div>
+  
+  <div id="stopwatch">00:00:00</div>
+  
+  <script>
+    let stopwatch;
+    let stopwatchDisplay = document.getElementById('stopwatch');
+    let milliseconds = 0,
+        seconds = 0,
+        minutes = 0;
+    let running = false;
+
+    function startStopwatch() {
+      if (!running) {
+        running = true;
+        stopwatch = setInterval(updateStopwatch, 10);
+      }
+    }
+
+    function updateStopwatch() {
+      milliseconds++;
+
+      if (milliseconds === 100) {
+        milliseconds = 0;
+        seconds++;
+
+        if (seconds === 60) {
+          seconds = 0;
+          minutes++;
+        }
+      }
+
+      displayTime();
+    }
+
+    function displayTime() {
+      let display = '';
+
+      if (minutes > 0) {
+        display += `${minutes.toString().padStart(2, '0')}:`;
+      }
+
+      display += `${seconds.toString().padStart(2, '0')}:${milliseconds.toString().padStart(2, '0')}`;
+      stopwatchDisplay.textContent = display;
+    }
+
+    function pauseStopwatch() {
+      clearInterval(stopwatch);
+      running = false;
+    }
+
+    function resetStopwatch() {
+      clearInterval(stopwatch);
+      running = false;
+      milliseconds = 0;
+      seconds = 0;
+      minutes = 0;
+      displayTime();
+    }
+  </script>
+</body>
+</html>
