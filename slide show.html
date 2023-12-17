@@ -17,29 +17,61 @@
 
     .slideshow-container img.active {
       display: block;
+     
     }
 
     .controls {
       text-align: center;
       margin-top: 10px;
+      
+    }
+    .button{
+        background-color: red;
+
     }
   </style>
 </head>
 <body>
   <div class="slideshow-container">
-    <img class="slides active" src="https://via.placeholder.com/800x400?text=Image1" alt="Image 1">
-    <img class="slides" src="https://via.placeholder.com/800x400?text=Image2" alt="Image 2">
-    <!-- Add more images here -->
-    <!-- Add 20 images like the above with unique src URLs -->
+    <img class="slides active" src="https://editzpresets.com/wp-content/uploads/2026/03/cb-background-new-min-1024x576.jpg" alt="Image 1">
+    <img class="slides" src="https://e0.pxfuel.com/wallpapers/145/270/desktop-wallpaper-paris-at-night-tour-eiffel-for-your-mobile-tablet-explore-paris-at-night-eiffel-tower-at-night-paris-black-midnight-in-paris-computer.jpg" alt="Image 2">
+    <img class="slides" src="https://images.pexels.com/photos/443446/pexels-photo-443446.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="Image 2">
+    <img class="slides" src="https://hd.wallpaperswide.com/thumbs/high_quality-t2.jpg" alt="Image 2">
+    <img class="slides" src="https://c4.wallpaperflare.com/wallpaper/520/89/112/little-cute-baby-wallpaper-thumb.jpg" alt="Image 2">
+    <img class="slides" src="https://media.istockphoto.com/id/1148091793/photo/technology-abstract.jpg?s=1024x1024&w=is&k=20&c=Q-tH-8QI959LcamRa50iCKV9UHcoBcZwh0bEPkeEzNE=" alt="Image 2">
+    <img class="slides" src="https://media.istockphoto.com/id/1400143112/photo/android-deep-learning-artificial-intelligence-background.jpg?s=1024x1024&w=is&k=20&c=fR1lCCgGKU987igrMar7LOhjKfZ7de2b1llpAb20Vdk=" alt="Image 2">
+    <img class="slides" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSYK2PdKXsY58Ltb7nIuR_KJtnyFeRAdJC4TnCiq2OFmw&s" alt="Image 2">
+    <img class="slides" src="https://i.pinimg.com/originals/23/94/56/2394563956a61a22e658a0b5713709c5.jpg" alt="Image 2">
+    <img class="slides" src="https://c4.wallpaperflare.com/wallpaper/849/138/463/nature-high-resolution-wallpaper-preview.jpg" alt="Image 2">
+    <img class="slides" src="https://cdn.wallpapersafari.com/90/41/ljru8X.jpg" alt="Image 2">
+    <img class="slides" src="https://i.pinimg.com/originals/1a/d9/9c/1ad99c6ededbced34f20f8bdc0811742.jpg" alt="Image 2">
+    <img class="slides" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTKgIetPlSd_GKW-Ksw0lCev4BONcLTnsJuSw&usqp=CAU" alt="Image 2">
+    <img class="slides" src="https://png.pngtree.com/thumb_back/fh260/background/20230524/pngtree-trees-reflected-in-water-with-a-beautiful-sky-and-colorful-sunset-image_2679078.jpg" alt="Image 2">
+    <img class="slides" src="https://img.freepik.com/premium-photo/moon-light-lake-shining-moon-night-woods-stars-shining_782516-1492.jpg"alt="Image 2">
+    <img class="slides" src="https://www.wallpapers13.com/wp-content/uploads/2015/12/Beautiful-flower-pictures-3266-1920x1440.jpg"alt="Image 2">
+    <img class="slides" src="https://www.wallpapers13.com/wp-content/uploads/2016/03/Beautiful-picture-desktop-background-widescreen-red-tulip-flower-wallpaper-Hd-1920x1440.jpg" alt="Image 2">
+    <img class="slides" src="https://e1.pxfuel.com/desktop-wallpaper/819/798/desktop-wallpaper-backgrounds-nature-high-quality-sky-on-pc-full-size.jpg" alt="Image 2">
+    <img class="slides" src="https://wallpapercave.com/wp/vCbHKkA.jpg" alt="Image 2">
+    <img class="slides" src="https://interfacelift.com/wallpaper/previews/04201_inbloom_672x420.jpg" alt="Image 2">
+    <img class="slides" src="https://www.wallpapers13.com/wp-content/uploads/2016/07/Beautiful-Scenery-Moskenes-Norway-Desktop-HD-Wallpaper-widescreen-resolutions-free-download-in-high-quality-1920x1200.jpg" alt="Image 2">
+   
+  
   </div>
   
   <div class="controls">
-    <button onclick="toggleSlideshow()">Start/Stop Slideshow</button>
+    
+    <button onclick="star()">Start</button>
+    <button onclick="stop()">Stop</button> 
+    <button onclick="slideshow()">Slideshow</button>
     <button onclick="prevSlide()">Previous</button>
     <button onclick="nextSlide()">Next</button>
   </div>
   
   <script>
+   
+
+
+
     let slideIndex = 0;
     let slides = document.getElementsByClassName("slides");
     let slideshowInterval;
@@ -74,13 +106,30 @@
         clearInterval(slideshowInterval);
         slideshowInterval = null;
       } else {
-        slideshowInterval = setInterval(nextSlide, 2000); // Change slide every 2 seconds (2000 milliseconds)
+        slideshowInterval = setInterval(nextSlide, 2000); 
       }
     }
 
-    showSlides(); // Show the initial slide
+    showSlides(); 
 
-    // Start slideshow automatically on page load
+    
+    slideshowInterval = setInterval(nextSlide, 2000);
+
+    showSlides();
+    
+
+    function toggleSlideshow() {
+      if (slideshowInterval) {
+        clearInterval(slideshowInterval);
+        slideshowInterval = null;
+      } else {
+        slideshowInterval = setInterval(nextSlide, 2000); 
+      }
+    }
+
+    showSlides(); 
+
+    
     slideshowInterval = setInterval(nextSlide, 2000);
   </script>
 </body>
