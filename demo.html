@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PhonePe by Divya Chaurasiya</title>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+</head>
+
+<body>
+    <div id="pay">
+        <div class="container">
+            <h1>Payment Page</h1>
+            <div class="amount-display">Amount: 5000 INR</div>
+            <form>
+                <label for="cardNumber">Card Number:</label>
+                <input type="number" id="cardNumber" name="cardNumber" placeholder="Enter your card number" required>
+
+                <label for="expiryDate">Expiry Date:</label>
+                <input type="text" id="expiryDate" name="expiryDate" placeholder="MM/YY" required>
+
+                <label for="cvv">CVV:</label>
+                <input type="number" id="cvv" name="cvv" placeholder="Enter CVV" required>
+
+                <button type="submit">Submit Payment</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="loding" class="hidden">
+        <div class="container">
+            <h1>Payment Processing</h1>
+            <div class="loading-spinner"></div>
+            <p class="message">Please wait while we process your payment...</p>
+        </div>
+    </div>
+
+
+    <div id="TransactionSuccess" class="hidden">
+        <div class="container">
+            <i class="success-icon">&#10004;</i>
+            <h1>Transaction Successful</h1>
+            <p>Thank you for your purchase!</p>
+            <button class="back-link" onclick="backToHome()">Back to Home</button>
+        </div>
+    </div>
+
+    <div id="transectionFail" class="hidden">
+        <div class="container">
+            <i class="fail-icon">&#10008;</i>
+            <h1>Transaction Failed</h1>
+            <p>We're sorry, but the transaction could not be completed.</p>
+            <button class="back-link" onclick="backToHome()">Back to Home</button>
+        </div>
+    </div>
+
+    <div id="demoModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="hideMod()">&times;</span>
+            <h2 class="green"> Valid Card Details</h2>
+            <p>Card Number: 4111 1111 2222 3333</p>
+            <p>Expiry Date: 10/40</p>
+            <p>CVV: 987</p>
+            <button class="back-link" onclick="fillValid()">Auto Fill</button>
+            <h2 class="red">InValid Card Details</h2>
+            <p>Card Number: 1111 2000 3000 4000</p>
+            <p>Expiry Date: 23/30</p>
+            <p>CVV: 197</p>
+            <button class="back-link" onclick="fillInValid()">Auto Fill</button>
+        </div>
+    </div>
+    <button class="back-link crdhlp" onclick="cardhelp()">Card Help</button>
+
+    <script src="index.js"></script>
+</body>
+
+</html>
