@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Timer</title>
+  <style>
+    .body{
+        border: 2px solid black;
+        background-color: gray;
+
+    }
+    /* Some basic styling for the timer */
+    #timer {
+      font-size: 36px;
+      text-align: center;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div>
+    <label for="hours">Hours:</label>
+    <input type="number" id="hours" min="0" value="0">
+    
+    <label for="minutes">Minutes:</label>
+    <input type="number" id="minutes" min="0" value="0">
+    
+    <label for="seconds">Seconds:</label>
+    <input type="number" id="seconds" min="0" value="0">
+  </div>
+  
+  <div>
+    <button onclick="startTimer()">Start</button>
+    <button onclick="pauseTimer()">Pause</button>
+    <button onclick="resetTimer()">Reset</button>
+  </div>
+  
+  <div id="timer">00:00:00</div>
+  
+  <script>
+    let timer;
+    let hoursInput = document.getElementById('hours');
+    let minutesInput = document.getElementById('minutes');
+    let secondsInput = document.getElementById('seconds');
+    let timerDisplay = document.getElementById('timer');
+    let hours, minutes, seconds;
+
+    function startTimer() {
+      hours = parseInt(hoursInput.value);
+      minutes = parseInt(minutesInput.value);
+      seconds = parseInt(secondsInput.value);
+
+      timer = setInterval(updateTimer, 1000);
+    }
+
+    function updateTimer() {
+      if (seconds === 0 && minutes === 0 && hours === 0) {
+        clearInterval(timer);
+        return;
+      }
+
+      seconds--;
+
+      if (seconds < 0) {
+        seconds = 59;
+        minutes--;
+
+        if (minutes < 0) {
+          minutes = 59;
+          hours--;
+
+          if (hours < 0) {
+            hours = 0;
+          }
+        }
+      }
+
+      timerDisplay.textContent = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+    }
+
+    function pauseTimer() {
+      clearInterval(timer);
+    }
+
+    function resetTimer() {
+      clearInterval(timer);
+      hoursInput.value = '0';
+      minutesInput.value = '0';
+      secondsInput.value = '0';
+      timerDisplay.textContent = '00:00:00';
+    }
+  </script>
+</body>
+</html>
